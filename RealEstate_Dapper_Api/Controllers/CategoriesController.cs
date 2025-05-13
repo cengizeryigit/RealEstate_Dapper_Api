@@ -49,10 +49,6 @@ namespace RealEstate_Dapper_Api.Controllers
         public async Task<IActionResult> GetCategory(int id)
         {
             var values = await _categoryRepository.GetCategory(id);
-            if (values == null)
-            {
-                return NotFound("Kategori Bulunamadı");
-            }
             return Ok(values);
         }
     }
