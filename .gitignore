@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/RealEstate_Dapper_UI/wwwroot/dashmin-1.0.0/css/bootstrap.min.css
