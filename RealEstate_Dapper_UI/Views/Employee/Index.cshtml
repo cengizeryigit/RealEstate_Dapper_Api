@@ -2,7 +2,11 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
+
+	int count = 0;
 }
+
+
 
 <div class="container-fluid pt-4 px-4">
 	<div class="row g-4">
@@ -25,8 +29,9 @@
 						<tbody>
 							@foreach (var item in Model)
 							{
+								count++;
 								<tr>
-									<th scope="row">@item.EmployeeID</th>
+									<th scope="row">@count</th>
 									<td>@item.Name</td>
 									<td>@item.Title</td>
 									<td>@(item.Status ? "Aktif" : "Pasif")</td>
@@ -36,7 +41,7 @@
 							}
 						</tbody>
 					</table>
-					<a href="/Category/CreateCategory" class="btn btn-outline-info">Yeni Kategori Girişi</a>
+					<a href="/Employee/CreateEmployee" class="btn btn-outline-info">Yeni Personel Girişi</a>
 				</div>
 			</div>
 		</div>
