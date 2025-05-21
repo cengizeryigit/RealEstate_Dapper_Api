@@ -70,7 +70,7 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreDetailRepository
             parameters.Add("@whoWeAreDetailID", updateWhoWeAreDetailDto.WhoWeAreDetailID);
             using (var connection = _context.CreateConnection())
             {
-                connection.Execute(query, parameters);
+               await connection.ExecuteAsync(query, parameters);
             }
         }
     }
