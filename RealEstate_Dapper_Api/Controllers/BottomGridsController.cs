@@ -24,7 +24,7 @@ namespace RealEstate_Dapper_Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateService(CreateBottomGridDto createBottomGridDto)
+        public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
         {
             _bottomGridRepository.CreateBottomGrid(createBottomGridDto);
 
