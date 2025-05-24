@@ -48,5 +48,27 @@ namespace RealEstate_Dapper_UI.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.PutAsync($"https://localhost:44379/api/Products/ProductDealOfTheDayStatusChangeToTrue/{id}", null);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.PutAsync($"https://localhost:44379/api/Products/ProductDealOfTheDayStatusChangeToFalse/{id}",null);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
