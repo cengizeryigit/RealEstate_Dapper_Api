@@ -28,6 +28,13 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok(values);
         }
 
+        [HttpGet("Last5ProductList")]
+        public async Task<IActionResult> Last5Product()
+        {
+            var values = await _productRepository.GetLast5ProductAsync();
+            return Ok(values);
+        }
+
         [HttpPut("ProductDealOfTheDayStatusChangeToTrue/{id}")]
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
         {
@@ -41,5 +48,7 @@ namespace RealEstate_Dapper_Api.Controllers
             _productRepository.ProductDealOfTheDayStatusChangeToFalse(id);
             return Ok("İlan durumu pasif edildi");
         }
+
+        
     }
 }
