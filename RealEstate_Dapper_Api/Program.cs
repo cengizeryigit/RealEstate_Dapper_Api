@@ -42,6 +42,7 @@ builder.Services.AddCors(opt =>
 
     });
 });
+builder.Services.AddHttpClient();
 builder.Services.AddSignalR();
 
 
