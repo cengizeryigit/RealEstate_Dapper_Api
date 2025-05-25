@@ -20,7 +20,11 @@
 
 									connection.start().then(()=>{
 											$("#connstatus").text(connection.state);
+
+											setInterval(()=>{
 												connection.invoke("SendCategoryCount");
+											},1000);
+												
 
 									}).catch((Error=> {console.log(err)}));
 
