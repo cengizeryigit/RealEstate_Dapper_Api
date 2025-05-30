@@ -1,4 +1,6 @@
-﻿namespace RealEstate_Dapper_UI.Services
+﻿using System.Security.Claims;
+
+namespace RealEstate_Dapper_UI.Services
 {
     public class LoginService : ILoginService
     {
@@ -9,6 +11,6 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst("sub").Value;
+        public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
     }
 }
