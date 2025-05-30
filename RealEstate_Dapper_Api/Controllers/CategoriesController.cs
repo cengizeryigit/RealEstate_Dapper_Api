@@ -26,7 +26,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-             _categoryRepository.CreateCategory(createCategoryDto);
+            _categoryRepository.CreateCategory(createCategoryDto);
 
             return Ok("Kategori Başarılı Bir Şekilde Eklendi");
         }

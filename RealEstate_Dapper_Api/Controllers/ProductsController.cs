@@ -49,6 +49,12 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok("İlan durumu pasif edildi");
         }
 
-        
+        [HttpGet("ProductAdvertsListByEmployee")]
+        public async Task<IActionResult> ProductAdvertsListByEmployee(int id)
+        {
+            var values = await _productRepository.GetProductAdvertListByEmployeeAsync(id);
+            return Ok(values);
+
+        }
     }
 }
