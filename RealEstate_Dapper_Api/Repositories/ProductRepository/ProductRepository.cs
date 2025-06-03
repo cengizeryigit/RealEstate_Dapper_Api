@@ -16,7 +16,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task CreateProduct(CreateProductDto createProductDto)
         {
-            string query = " insert into Product (Title, Price,City, District,CoverImage, Type,Address, DealOfTheDay,AdvertisementDate,ProductStatus,ProductCategory,EmployeeID) values (@Title, @Price,@City, @District,@CoverImage, @Type,@Address, @DealOfTheDay,@AdvertisementDate,@ProductStatus,@ProductCategory,@EmployeeID)";
+            string query = " insert into Product (Title, Price,City, District,CoverImage, Type,Address, DealOfTheDay,AdvertisementDate,Description,ProductStatus,ProductCategory,EmployeeID) values (@Title, @Price,@City, @District,@CoverImage, @Type,@Address, @DealOfTheDay,@AdvertisementDate,@Description,@ProductStatus,@ProductCategory,@EmployeeID)";
 
             var parameters = new DynamicParameters();
             parameters.Add("Title", createProductDto.Title);
@@ -31,6 +31,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             parameters.Add("ProductStatus", createProductDto.ProductStatus);
             parameters.Add("ProductCategory", createProductDto.ProductCategory);
             parameters.Add("EmployeeID", createProductDto.EmployeeID);
+            parameters.Add("Description", createProductDto.Description);
             
             using (var connection = _context.CreateConnection())
             {
