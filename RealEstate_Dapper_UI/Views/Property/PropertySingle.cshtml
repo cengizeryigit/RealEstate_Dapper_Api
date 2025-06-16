@@ -1,4 +1,4 @@
-﻿
+﻿@model dynamic
 @{
     ViewData["Title"] = "PropertySingle";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
@@ -25,26 +25,26 @@
         <div class="inner mb-4">
             <ul class="blog-single-author-date align-items-center">
                 <li>
-                    <div class="listing-category"><span>Buy</span><span>Rent</span></div>
+                    <div class="listing-category"><span>@Model.values.type</span></div>
                 </li>
                 <li><span class="fa fa-clock-o"></span> 5 months ago</li>
                 <li><span class="fa fa-eye"></span> 250 views</li>
             </ul>
         </div>
         <div class="post-content">
-            <h2 class="title-single"> A digital prescription for the pharma industry</h2>
+            <h2 class="title-single"> @Model.values.title</h2>
         </div>
         <div class="blo-singl mb-4">
             <ul class="blog-single-author-date align-items-center">
                 <li>
-                    <p>Unnamed road, San Francisco, CA 94102</p>
+                    <p>@Model.values.address  @Model.values.district  /  @Model.values.city</p>
                 </li>
-                <li><span class="fa fa-bed"></span> 3 Beds</li>
-                <li><span class="fa fa-bath"></span> 4 Baths</li>
-                <li><span class="fa fa-share-square-o"></span> 1258 sqrft</li>
+                <li><span class="fa fa-bed"></span> @Model.details.BedroomCount Yatak Odası</li>
+                <li><span class="fa fa-bath"></span> @Model.details.BathCount Banyo</li>
+                <li><span class="fa fa-share-square-o"></span> @Model.details.ProductSize m2</li>
             </ul>
             <ul class="share-post">
-                <a href="#url" class="cost-estate m-o">$25,0045</a>
+                <a href="#url" class="cost-estate m-o">₺ @Model.values.price</a>
             </ul>
         </div>
         <div class="row">
@@ -194,6 +194,7 @@
                             </figure>
                             <div class="text">
                                 <a href="#blog-single">
+
                                     Simply the best. Better than the rest.
                                 </a>
                                 <div class="post-info">Sep 10, 2020 - 2 comments</div>
