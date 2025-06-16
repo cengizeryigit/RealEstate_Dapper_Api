@@ -43,7 +43,6 @@ namespace RealEstate_Dapper_UI.Controllers
 
             model.values = JsonConvert.DeserializeObject<ResultProductDto>(jsonData);
             model.details = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonData2);
-            // model.values.date = DateTime.Now.ToString("dd/MM/yyyy");
 
 
             return View(model);

@@ -12,5 +12,7 @@
         public string Address { get; set; }
         public string CategoryName { get; set; }
         public bool DealOfTheDay { get; set; }
+
+        public DateTime AdvertisementDate { get; set; }
     }
 }
