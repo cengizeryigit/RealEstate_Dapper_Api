@@ -135,29 +135,29 @@
                     <!-- Popular Post Widget-->
                     <div class="sidebar-widget popular-posts">
                         <div class="sidebar-title">
-                            <h4>Contact an Agent</h4>
+                            <h4>Eklakçı İletişim Bilgileri</h4>
                         </div>
 
                         <article class="post">
                             <figure class="post-thumb">
-                                <img src="~/starter/assets/images/l5.jpg" class="radius-image" alt="">
+                                <img src="@Model.user.UserImageUrl" style="height:100px; width:100px;" class="radius-image" alt="">
                             </figure>
                             <div class="text mb-0">
                                 <a href="#blog-single">
-                                    Company realty
+                                    @Model.user.Name
                                 </a>
-                                <div class="post-info">+(12) 324 567 89</div>
-                                <div class="post-info">companyrealty@mail.com</div>
+                                <div class="post-info">@Model.user.PhoneNumber</div>
+                                <div class="post-info">@Model.user.Email</div>
                             </div>
                         </article>
-                        <button type="submit" class="btn btn-primary btn-style w-100">Request details</button>
+                        <button type="submit" class="btn btn-primary btn-style w-100">Detaylı İletişim Bilgileri</button>
                     </div>
 
 
                     <!-- Popular Post Widget-->
                     <div class="sidebar-widget popular-posts">
                         <div class="sidebar-title">
-                            <h4>Popular Post</h4>
+                            <h4>Emlakçıya ait diğer ilanlar</h4>
                         </div>
 
                         <article class="post">

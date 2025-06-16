@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RealEstate_Dapper_UI.Dtos.AppUserDtos;
 using RealEstate_Dapper_UI.Dtos.ProductDetailDtos;
 using RealEstate_Dapper_UI.Dtos.ProductDtos;
 using RealEstate_Dapper_UI.Dtos.ProductImageDtos;
@@ -40,13 +41,17 @@ namespace RealEstate_Dapper_UI.Controllers
             var responseMessageValues = await client.GetAsync("https://localhost:44379/api/Products/GetProductByProductId?id=" + id);
             var responseMessageDetails = await client.GetAsync("https://localhost:44379/api/ProductDetails/GetProductDetailByProductId?id=" + id);
             var responseMessageImages = await client.GetAsync("https://localhost:44379/api/ProductImages/GetProductImageByProductId?productId=" + id);
+            var responseMessageUser = await client.GetAsync("https://localhost:44379/api/AppUsers/GetAppUserByProductId?id=" + id);
+
             var jsonDataValues = await responseMessageValues.Content.ReadAsStringAsync();
             var jsonDataDetails = await responseMessageDetails.Content.ReadAsStringAsync();
             var jsonDataImages = await responseMessageImages.Content.ReadAsStringAsync();
+            var jsonDataUser = await responseMessageUser.Content.ReadAsStringAsync();
 
             model.values = JsonConvert.DeserializeObject<ResultProductDto>(jsonDataValues);
             model.details = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonDataDetails);
             model.images = JsonConvert.DeserializeObject<List<GetProductImageByProductIdDto>>(jsonDataImages);
+            model.user = JsonConvert.DeserializeObject<GetAppUserByProductByIdDto>(jsonDataUser);
 
 
             return View(model);
