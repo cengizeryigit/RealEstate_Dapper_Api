@@ -47,26 +47,22 @@
                 <a href="#url" class="cost-estate m-o">₺ @Model.values.price</a>
             </ul>
         </div>
+
         <div class="row">
             <div class="col-lg-8 w3l-news">
                 <div class="blog-single-post">
                     <div class="single-post-image mb-5">
                         <div class="owl-blog owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="card">
-                                    <img src="~/starter/assets/images/p1.jpg" class="img-fluid radius-image" alt="image">
+                            @foreach (var item in Model.images)
+                            {
+                                <div class="item">
+                                    <div class="card">
+                                        <img src="@item.ImageUrl" class="img-fluid radius-image" alt="image">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="card">
-                                    <img src="~/starter/assets/images/p2.jpg" class="img-fluid radius-image" alt="image">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card">
-                                    <img src="~/starter/assets/images/p3.jpg" class="img-fluid radius-image" alt="image">
-                                </div>
-                            </div>
+                            }
+                           
+
                         </div>
                     </div>
 

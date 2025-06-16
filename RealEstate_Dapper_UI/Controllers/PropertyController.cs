@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using RealEstate_Dapper_UI.Dtos.ProductDetailDtos;
 using RealEstate_Dapper_UI.Dtos.ProductDtos;
+using RealEstate_Dapper_UI.Dtos.ProductImageDtos;
 using System.Dynamic;
 
 namespace RealEstate_Dapper_UI.Controllers
@@ -36,13 +37,16 @@ namespace RealEstate_Dapper_UI.Controllers
 
             id = 1;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44379/api/Products/GetProductByProductId?id=" + id);
-            var responseMessage2 = await client.GetAsync("https://localhost:44379/api/ProductDetails/GetProductDetailByProductId?id=" + id);
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+            var responseMessageValues = await client.GetAsync("https://localhost:44379/api/Products/GetProductByProductId?id=" + id);
+            var responseMessageDetails = await client.GetAsync("https://localhost:44379/api/ProductDetails/GetProductDetailByProductId?id=" + id);
+            var responseMessageImages = await client.GetAsync("https://localhost:44379/api/ProductImages/GetProductImageByProductId?productId=" + id);
+            var jsonDataValues = await responseMessageValues.Content.ReadAsStringAsync();
+            var jsonDataDetails = await responseMessageDetails.Content.ReadAsStringAsync();
+            var jsonDataImages = await responseMessageImages.Content.ReadAsStringAsync();
 
-            model.values = JsonConvert.DeserializeObject<ResultProductDto>(jsonData);
-            model.details = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonData2);
+            model.values = JsonConvert.DeserializeObject<ResultProductDto>(jsonDataValues);
+            model.details = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonDataDetails);
+            model.images = JsonConvert.DeserializeObject<List<GetProductImageByProductIdDto>>(jsonDataImages);
 
 
             return View(model);
