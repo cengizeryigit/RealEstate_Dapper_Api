@@ -35,6 +35,7 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryId, string city)
         {
             ViewBag.v = TempData["word"];
+            ViewBag.y = TempData["word1"];
             searchKeyValue = "Daire";
             propertyCategoryId = 2;
             city = "İstanbul";
