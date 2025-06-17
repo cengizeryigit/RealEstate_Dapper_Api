@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
+@Html.ActionLink("PropertyListWithSearch", "Property" )
+
 @await Component.InvokeAsync("_DefaultFeatureComponentPartial")
 
 @await Component.InvokeAsync("_DefaultHomePageProductList")

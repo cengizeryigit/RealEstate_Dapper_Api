@@ -8,5 +8,19 @@ namespace RealEstate_Dapper_UI.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public PartialViewResult PartialSearch()
+        {
+             return PartialView();
+        }
+
+        [HttpPost]
+        public IActionResult PartialSearch(string p)
+        {
+            TempData["word"] = p;
+
+            return RedirectToAction("PropertListWithSearch","Property");
+        }
     }
 }
