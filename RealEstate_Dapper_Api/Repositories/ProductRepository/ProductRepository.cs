@@ -155,6 +155,22 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
                await connection.ExecuteAsync(query, parameters);
             }
         }
+
+        public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
+        {
+            string query = "SELECT * FROM Product WHERE Title LIKE @searchKeyValue AND ProductCategory = @propertyCategoryId AND City = @city";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@searchKeyValue", $"%{searchKeyValue}%"); // <-- burada C# tarafında LIKE deseni oluşturuldu
+            parameters.Add("@propertyCategoryId", propertyCategoryId);
+            parameters.Add("@city", city);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithSearchListDto>(query, parameters);
+                return values.ToList();
+            }
+        }
     }
 
 }
