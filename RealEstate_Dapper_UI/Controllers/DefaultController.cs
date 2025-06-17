@@ -13,8 +13,17 @@ namespace RealEstate_Dapper_UI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44379/api/Categories");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+                return View(values);
+            }
             return View();
         }
 
@@ -23,6 +32,7 @@ namespace RealEstate_Dapper_UI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44379/api/Categories");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -30,14 +40,16 @@ namespace RealEstate_Dapper_UI.Controllers
                 return PartialView(values);
             }
 
-            return PartialView();
+            // HATA OLMASI DURUMUNDA BOŞ LİSTE GÖNDER
+            return PartialView(new List<ResultCategoryDto>());
         }
 
         [HttpPost]
-        public IActionResult PartialSearch(string p, string y)
+        public IActionResult PartialSearch(string searchKeyValue, int propertyCategoryId, string city)
         {
-            TempData["word"] = p;
-            TempData["word1"] = y;
+            TempData["searchKeyValue"] = searchKeyValue;
+            TempData["propertyCategoryId"] = propertyCategoryId;
+            TempData["city"] = city;
 
             return RedirectToAction("PropertyListWithSearch","Property");
         }
