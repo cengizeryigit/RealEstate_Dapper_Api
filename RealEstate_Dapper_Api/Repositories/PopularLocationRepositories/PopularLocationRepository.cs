@@ -73,6 +73,8 @@ namespace RealEstate_Dapper_Api.Repositories.PopularLocationRepositories
             {
                 await connection.ExecuteAsync(query, parameters);
             }
+
+            
         }
     }
 }
