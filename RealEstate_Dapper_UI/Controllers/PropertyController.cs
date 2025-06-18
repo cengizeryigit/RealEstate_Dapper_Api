@@ -51,8 +51,8 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> PropertySingle(int id)
+        [HttpGet("property/{slug}/{id}")]
+        public async Task<IActionResult> PropertySingle(string slug ,int id)
         {
             dynamic model = new ExpandoObject();
 
@@ -76,8 +76,23 @@ namespace RealEstate_Dapper_UI.Controllers
             model.amenity = JsonConvert.DeserializeObject<List<ResultPropertAmenityByStatusTrueDto>>(jsonDataAmenity);
 
 
+            //string slugFromTitle = CreateSlug(model.values.title);
+            //model.values.SlugUrl = slugFromTitle;
+
+
             return View(model);
 
+        }
+
+        private string CreateSlug(string title)
+        {
+            title = title.ToLowerInvariant(); // Küçük harfe çevir
+            title = title.Replace(" ", "-"); // Boşlukları tire ile değiştir
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[^a-z0-9\s-]", ""); // Geçersiz karakterleri kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s+", " ").Trim(); // Birden fazla boşluğu tek boşluğa indir ve kenar boşluklarını kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s", "-"); // Boşlukları tire ile değiştir
+
+            return title;
         }
 
         

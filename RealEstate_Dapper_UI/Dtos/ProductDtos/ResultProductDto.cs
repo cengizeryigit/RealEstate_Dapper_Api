@@ -14,6 +14,7 @@
         public string categoryName { get; set; }
         public bool dealOfTheDay { get; set; }
         public DateTime AdvertisementDate { get; set; }
+        public string SlugUrl { get; set; }
 
     }
 }
