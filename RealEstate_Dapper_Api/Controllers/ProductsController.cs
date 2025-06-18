@@ -45,14 +45,14 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpPut("ProductDealOfTheDayStatusChangeToTrue/{id}")]
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
         {
-            _productRepository.ProductDealOfTheDayStatusChangeToTrue(id);
+            await _productRepository.ProductDealOfTheDayStatusChangeToTrue(id);
             return Ok("İlan durumu aktif edildi");
         }
 
         [HttpPut("ProductDealOfTheDayStatusChangeToFalse/{id}")]
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
         {
-            _productRepository.ProductDealOfTheDayStatusChangeToFalse(id);
+            await _productRepository.ProductDealOfTheDayStatusChangeToFalse(id);
             return Ok("İlan durumu pasif edildi");
         }
 
