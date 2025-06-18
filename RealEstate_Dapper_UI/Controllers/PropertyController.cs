@@ -56,7 +56,6 @@ namespace RealEstate_Dapper_UI.Controllers
         {
             dynamic model = new ExpandoObject();
 
-            id = 1;
             var client = _httpClientFactory.CreateClient();
             var responseMessageValues = await client.GetAsync("https://localhost:44379/api/Products/GetProductByProductId?id=" + id);
             var responseMessageDetails = await client.GetAsync("https://localhost:44379/api/ProductDetails/GetProductDetailByProductId?id=" + id);

@@ -91,11 +91,17 @@
                         <div class="single-bg-white">
                             <h3 class="post-content-title mb-4">Özellikler</h3>
                             <ul class="details-list">
-                                @foreach(var item in Model.amenity)
-                                {
-                                    <li><strong>@item.Title </strong></li>
-                                }
-                                
+                                 @if (Model?.amenity != null)
+                                 {
+                                     foreach (var item in Model.amenity)
+                                     {
+                                         <li><strong>@item.Title</strong></li>
+                                     }
+                                 }
+                                 else
+                                 {
+                                     <li>Özellik bulunamadı.</li> <!-- İsteğe bağlı: boş liste mesajı -->
+                                 }
                             </ul>
                         </div>
                     </div>
